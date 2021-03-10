@@ -1,70 +1,69 @@
 from functools import partial
 from tkinter import  *
-memoria = [] #Lista de onde vai ficar os numeros que o usuario salvar
+memoria = []
 
-def btClick(botao):#Funçao do botao de numero e operaçoes para apareces no visor da calculadora
-    ed['text'] += botao['text']
-    print(ed)
-def soma ():#Função do botao de igual em que a pessoa clica e realiza o calculo
-    resultado = str(eval(ed['text']))#faz o calculo
-    ed['text'] = resultado#imprime o resultaado na tela
+def btClick(botao):
+    visorPrincipal['text'] += botao['text']
+    print(visorPrincipal)
+def soma ():
+    resultado = str(eval(visorPrincipal['text']))
+    visorPrincipal['text'] = resultado
 
-def mS():#Função para salvar o numero na memoria
-    valor = ed['text']#resgata o valor contido na tela
-    if valor == '':#caso o usuario va salvar e nao digite nada ira imprimir essa mensagem e tirar esse valor da memoria
+def mS():
+    ResgatarvalorNaTela = visorPrincipal['text']
+    if ResgatarvalorNaTela == '':
         print('Valor invalido')
         memoria.pop(0)
-    elif len(memoria[1:2]):#se a memoria tiver acima de 2 numeros vai retira o numero anterior para nao dar bug
+    elif len(memoria[1:2]):
         memoria.pop(0)
-    else :#se o usuario digitou um valor valido vai salvar na memoria
-        memoria.append(valor)
+    else :
+        memoria.append(ResgatarvalorNaTela)
     valorM = memoria[1:2]
     visor['text'] = valorM
     print(memoria)
-def mM():#Função para somar o numero salvo com o numero na tela
+def mM():
     if len(memoria) > 1:
         memoria.pop(0)
     elif len(memoria) == 0:
         print('Nenhum valor salvo')
 
-    m = memoria[0]
-    m = int(m)
-    n = ed['text']
+    ResgataValorMemoria = memoria[0]
+    m = int(ResgataValorMemoria)
+    n = visorPrincipal['text']
     n =  int(n)
-    somaEd = m + n
-    ed['text'] = str(somaEd)
+    somaMmais = m + n
+    visorPrincipal['text'] = str(somaMmais)
 
-def mSub():#Função para subtrair o numero salvo com o numero na tela
+def mSub():
     if len(memoria) > 1:
         memoria.pop(0)
     elif memoria  == []:
         print('Nenhum valor salvo')
 
-    m = memoria[0]
-    m = int(m)
-    n = ed['text']
+    valorMemoria = memoria[0]
+    m = int(valorMemoria)
+    n = visorPrincipal['text']
     n = int(n)
     subEd = n - m
-    ed['text'] = str(subEd)
-def clearM():#vai limpar a tela onde o usuario digita a operação
+    visorPrincipal['text'] = str(subEd)
+def clearM():
     memoria.clear()
     visor['text'] = ''
 
 
-def clear():#vai limpar o visor onde ficou os numeros salvos na memoria
-    ed['text'] = ''
+def clear():
+    visorPrincipal['text'] = ''
 
 
 
 
-#Abaixo o front-end da calculadora
 janela = Tk()
 janela.title("Calculadora")
 janela['bg'] = 'grey'
 janela.geometry('500x500+600+150')
 
-ed =Label(janela, width=40, height=2)
-ed.place(x=50,y=30)
+visorPrincipal =Label(janela, width=40, height=2)
+visorPrincipal.place(x=50,y=30)
 visor =Label(janela,width=5,height=2)
 visor.place(x=350,y=30)
 
