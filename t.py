@@ -33,7 +33,6 @@ def mM():
     n =  int(n)
     somaMmais = m + n
     visorPrincipal['text'] = str(somaMmais)
-
 def mSub():
     if len(memoria) > 1:
         memoria.pop(0)
@@ -68,13 +67,8 @@ visor =Label(janela,width=5,height=2)
 visor.place(x=350,y=30)
 
 bt19 = Button(janela, width=10, text='MC', height=2,command=clearM)
-
 bt18 = Button(janela, width=10, height=2,text='M-', command=mSub)
-
-
 bt17 = Button(janela, width=10, height=2,text='M+', command=mM)
-
-
 bt16 = Button(janela, width=10, text='MS', height=2,command=mS)
 
 
