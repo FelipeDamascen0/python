@@ -1,15 +1,15 @@
 from functools import partial
 from tkinter import  *
-memoria = []
+memoria = [] #onde os numeros salvos serao armazenados
 
-def btClick(botao):
+def btClick(botao):#funcao para aparecer a operacao na tela do usuario
     visorPrincipal['text'] += botao['text']
     print(visorPrincipal)
-def soma ():
+def soma ():#funcao para realizar a operacao de +, -, *, /
     resultado = str(eval(visorPrincipal['text']))
     visorPrincipal['text'] = resultado
 
-def mS():
+def mS():#funcao para salvar o numero na memoria
     ResgatarvalorNaTela = visorPrincipal['text']
     if ResgatarvalorNaTela == '':
         print('Valor invalido')
@@ -21,7 +21,7 @@ def mS():
     valorM = memoria[1:2]
     visor['text'] = valorM
     print(memoria)
-def mM():
+def mM():#funcao para somar o numero salvo na memoria com o numero na tela
     if len(memoria) > 1:
         memoria.pop(0)
     elif len(memoria) == 0:
@@ -33,7 +33,7 @@ def mM():
     n =  int(n)
     somaMmais = m + n
     visorPrincipal['text'] = str(somaMmais)
-def mSub():
+def mSub():#funcao para subtrair o numero salvo na memoria com o numero na tela
     if len(memoria) > 1:
         memoria.pop(0)
     elif memoria  == []:
@@ -45,17 +45,17 @@ def mSub():
     n = int(n)
     subEd = n - m
     visorPrincipal['text'] = str(subEd)
-def clearM():
+def clearM():#funcao para limpar os numeros salvos na memoria
     memoria.clear()
     visor['text'] = ''
 
 
-def clear():
+def clear():#funcao para limpar a tela
     visorPrincipal['text'] = ''
 
 
 
-
+#front-end da calculadora
 janela = Tk()
 janela.title("Calculadora")
 janela['bg'] = 'grey'
@@ -141,3 +141,4 @@ bt19.place(x=310, y=70)
 bt20.place(x=135, y=250)
 
 janela.mainloop()
+#fim do front end
